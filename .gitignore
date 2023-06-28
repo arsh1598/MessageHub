@@ -27,5 +27,6 @@ replay_pid*
 */.metadata/*
 *.history
 .DS_Store
-*/node_modules/*
 package-lock.json
+ui/messageHub-ui/build/
+ui/messageHub-ui/node_modules/
