@@ -3,9 +3,11 @@ package com.github.messagehub.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.github.messagehub.dto.LoginUserDTO;
+import com.github.messagehub.exceptions.InvalidCredentialsException;
 import com.github.messagehub.exceptions.UserAlreadyExistsException;
 import com.github.messagehub.exceptions.UserDoesNotExistException;
 import com.github.messagehub.model.User;
@@ -16,6 +18,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 
 	public List<User> getAllUsers() {
 		return (List<User>) this.userRepository.findAll();
@@ -44,8 +49,8 @@ public class UserService {
 		User user = new User();
 		user.setName(request.getName());
 		user.setPhone(request.getPhone());
-		user.setPassword(request.getPassword());
-		System.out.println(user.getName());
+		String encryptedPassword = passwordEncoder.encode(request.getPassword());
+		user.setPassword(encryptedPassword);
 		return this.userRepository.save(user);
 	}
 
@@ -53,6 +58,9 @@ public class UserService {
 		User user = this.userRepository.findByPhone(request.getPhone());
 		if (user == null) {
 			throw new UserDoesNotExistException(request.getPhone());
+		}
+		if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+			throw new InvalidCredentialsException();
 		}
 		return user;
 	}
