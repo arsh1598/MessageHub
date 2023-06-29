@@ -20,4 +20,10 @@ public class ExceptionHandlers {
 	public ResponseEntity<String> handleUserDoesNotExistException(UserDoesNotExistException e) {
 		return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(InvalidCredentialsException.class)
+	@ResponseBody
+	public ResponseEntity<String> handleInvalidCredentialsException(InvalidCredentialsException e){
+		return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+		}
 }

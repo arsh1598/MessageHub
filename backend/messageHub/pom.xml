@@ -52,7 +52,10 @@
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -61,7 +64,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		
+
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -78,7 +81,7 @@
 							<arguments>
 								<argument>install</argument>
 							</arguments>
-							<workingDirectory>../../ui/messageHub-ui</workingDirectory> 
+							<workingDirectory>../../ui/messageHub-ui</workingDirectory>
 						</configuration>
 					</execution>
 					<execution>
@@ -93,7 +96,7 @@
 								<argument>run</argument>
 								<argument>build</argument>
 							</arguments>
-							<workingDirectory>../../ui/messageHub-ui</workingDirectory> 
+							<workingDirectory>../../ui/messageHub-ui</workingDirectory>
 						</configuration>
 					</execution>
 				</executions>

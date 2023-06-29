@@ -24,7 +24,8 @@ const Register = () => {
         user
       );
       if(response.status===200){
-        navigate("/messagehub/messages");
+        const id = response.data.id;
+        navigate("/messagehub/contacts", { state: { id } });
       }
     } catch (error) {
       console.error(error);
