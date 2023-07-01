@@ -82,6 +82,10 @@ const Messages = () => {
         <button className="add-contact" onClick={handleOpenDialog}>
           Add Contact
         </button>
+        <label class="toggle" title="Switch between offline/online mode">
+          <input type="checkbox" />
+          <span class="slider"></span>
+        </label>
         <Dialog open={openDialog} onClose={handleCloseDialog}>
           <DialogTitle>Enter contact number</DialogTitle>
           <DialogContent>
