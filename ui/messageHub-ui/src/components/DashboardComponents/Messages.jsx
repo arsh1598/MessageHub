@@ -2,7 +2,7 @@ import React from "react";
 import "./Messages.css";
 import List from "./List";
 import AddContact from "./AddContact";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import {
@@ -14,12 +14,14 @@ import {
 import MessageFooter from "./MessageFooter";
 
 const Messages = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.state?.id;
   const [contact, setContact] = useState({
     userId: id,
     phone: "",
   });
+  var flagToConnect = false;
   const [currentFriend, setCurrentFriend] = useState();
   const [messageResponse, setMessageResponse] = useState([
     {
@@ -64,6 +66,7 @@ const Messages = () => {
   };
 
   const showMessages = async (messageRequest) => {
+    flagToConnect=false;
     try {
       await axios
         .post("/messagehub/rest/messages", messageRequest)
@@ -78,7 +81,6 @@ const Messages = () => {
   return (
     <>
       <header>
-        Chats
         <button className="add-contact" onClick={handleOpenDialog}>
           Add Contact
         </button>
@@ -129,7 +131,8 @@ const Messages = () => {
             <MessageFooter
               senderId={id}
               receiverId={currentFriend}
-              showMessages={showMessages}
+              flagToConnect={flagToConnect}
+              setMessageResponse={setMessageResponse}
             />
           </div>
         </div>

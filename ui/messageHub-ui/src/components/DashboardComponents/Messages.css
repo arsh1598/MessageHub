@@ -21,6 +21,12 @@ header {
   margin-top: 25px;
 }
 
+.chatroom {
+  background-color: #007bff;
+  border: 1px solid white;
+  margin-top: 25px;
+}
+
 .left-pane {
   width: 13%;
   height: calc(100vh - 120px);

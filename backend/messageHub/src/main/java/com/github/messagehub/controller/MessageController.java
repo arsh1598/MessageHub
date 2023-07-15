@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +34,8 @@ public class MessageController {
 		return new ResponseEntity<List<Message>>((List<Message>) this.messageService.getMessage(request), HttpStatus.OK);
 	}
 
+	@MessageMapping("/send")
+	@SendTo("/topic/chats")
 	@PostMapping("/send")
 	public ResponseEntity<Message> sendMessage(@RequestBody Message request) {
 		return new ResponseEntity<Message>(this.messageService.sendMessage(request), HttpStatus.OK);

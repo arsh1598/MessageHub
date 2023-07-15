@@ -2,7 +2,6 @@ package com.github.messagehub;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
