@@ -63,7 +63,7 @@ const Login = () => {
       <button
         type="submit"
         className="btn"
-        style={{ backgroundColor: "orange" }}
+        style={{ backgroundColor: "#007bff" }}
       >
         Submit
       </button>

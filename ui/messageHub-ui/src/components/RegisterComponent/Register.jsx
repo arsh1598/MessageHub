@@ -78,7 +78,7 @@ const Register = () => {
         />
       </div>
       <br></br>
-      <button type="submit" className="btn" style={{ backgroundColor: "orange" }}>
+      <button type="submit" className="btn" style={{ backgroundColor: "#007bff" }}>
         Submit
       </button>
     </form>
