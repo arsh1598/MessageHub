@@ -3,7 +3,6 @@ import Register from "./components/RegisterComponent/Register";
 import Title from "./components/TitleComponent/Title";
 import { useState } from "react";
 import Login from "./components/LoginComponent/Login";
-import Messages from "./components/DashboardComponents/Messages";
 
 function App() {
   const [showRegister, setShowRegister] = useState(false);
@@ -25,7 +24,7 @@ function App() {
         <button className="button" onClick={() => showRegisterForm()}>
           Register
         </button>
-        <button className="button orange" onClick={() => showLoginForm()}>
+        <button className="button blue" onClick={() => showLoginForm()}>
           Login
         </button>
       </div>
